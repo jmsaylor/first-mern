@@ -14,6 +14,7 @@ const User = require("../../models/User");
 router.post(
   "/",
   [
+    //middleware is an array of express-validator calls
     check("name", "Make sure to add your name").not().isEmpty(),
     check("email", "Please add your email").isEmail(),
     check("password", "mininum 6 characters for password").isLength({ min: 6 }),
@@ -46,12 +47,12 @@ router.post(
       });
 
       // Encrypt password
-      const salt = await bcrypt.genSalt(10);
+      const salt = await bcrypt.genSalt(10); //is the salt only kept server-side?
 
-      user.password = await bcrypt.hash(password, salt);
+      user.password = await bcrypt.hash(password, salt); //the hash call
 
       await user.save();
-      // Return JWT
+      // we send back a JWT token in /api/auth as well, why the two?
       const payload = {
         user: {
           id: user.id,
@@ -60,10 +61,10 @@ router.post(
       jwt.sign(
         payload,
         config.get("jwtSecret"),
-        { expiresIn: 360000 },
+        { expiresIn: 360000 }, //<---number different in production
         (err, token) => {
           if (err) throw err;
-          res.json({ token });
+          res.json({ token }); //<---
         }
       );
     } catch (error) {
