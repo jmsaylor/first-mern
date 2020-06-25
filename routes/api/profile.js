@@ -32,13 +32,13 @@ router.get(
   }
 );
 // @route GET   api/profile/all
-// @description Get all users profiles
+// @description Get all users profiles except the user that requests, and no location data
 // @access      Private
 router.get("/all", auth, async (req, res) => {
   try {
     const allDocs = await Profile.find({}, { location: 0 });
+    allDocs = allDocs.filter((doc) => doc.user !== req.user.id);
     res.send(allDocs);
-    // allDocs = allDocs.filter((doc) => doc.user !== req.user);
   } catch (error) {
     console.error(error);
   }
