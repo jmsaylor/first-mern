@@ -11,6 +11,10 @@ const User = require("../../models/User");
 // @route GET   api/users
 // @description Post user
 // @access      Public
+
+// @route POST   api/users
+// @description Post user
+// @access      Public
 router.post(
   "/",
   [
