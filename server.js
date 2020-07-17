@@ -3,7 +3,7 @@ const connectDB = require("./config/db");
 
 const app = express();
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 3030;
 
 //start server
 app.listen(PORT, () => console.log(`you got it - listening on ${PORT}`));
