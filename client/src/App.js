@@ -10,7 +10,7 @@ import Login from "./components/auth/Login";
 const App = () => {
   return (
     <Router>
-      <Fragment className='App'>
+      <Fragment>
         <Navbar />
         <Route exact path='/' component={Landing} />
         <section className='container'>
