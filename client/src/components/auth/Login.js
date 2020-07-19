@@ -19,7 +19,6 @@ const Login = () => {
 
   return (
     <Fragment>
-      <div>Login</div>
       <section className='container'>
         <h1 className='large text-primary'>Sign In</h1>
         <p className='lead'>

@@ -43,7 +43,6 @@ const Register = () => {
 
   return (
     <Fragment>
-      <div>Register</div>
       <section className='container'>
         <h1 className='large text-primary'>Sign Up</h1>
         <p className='lead'>
